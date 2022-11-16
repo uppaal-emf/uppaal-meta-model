@@ -4,7 +4,6 @@ import org.eclipse.emf.mwe.utils.StandaloneSetup
 import org.eclipse.emf.mwe2.ecore.EcoreGenerator
 import org.eclipse.emf.mwe2.runtime.workflow.Workflow
 
-var parentPath
 var pluginID
 
 Workflow {
