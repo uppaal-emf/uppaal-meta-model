@@ -1,0 +1,25 @@
+# Eclipse specific stuff
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# Output folders
+bin/
+target/
+
+# Generated sources
+src-gen/
+icons/

@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.muml.uppaal</groupId>
+	<artifactId>org.muml.uppaal</artifactId>
+	<version>${revision}</version>
+	<packaging>eclipse-plugin</packaging>
+
+	<parent>
+		<groupId>org.muml.uppaal</groupId>
+		<artifactId>org.muml.uppaal.parent</artifactId>
+		<version>${revision}</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<name>uppal-ecore</name>
+	<description>Plugin containing the ecore meta model of UPPAALs timed automata</description>
+
+	<properties>
+		<!-- modeling workflow engine version -->
+		<mwe-version>1.7.0</mwe-version>
+		<mwe2-version>2.13.0</mwe2-version>
+
+		<!-- emf codegen versions -->
+		<codegen-version>2.22.0</codegen-version>
+		<codegen-ecore-version>2.31.0</codegen-ecore-version>
+
+		<!-- eclipse xtext dependency versions -->
+		<xtext-version>2.29.0.M1</xtext-version>
+	</properties>
+
+	<build>
+		<sourceDirectory>src-gen</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>src-gen</directory>
+							<followSymlinks>false</followSymlinks>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${project.basedir}/src</source>
+								<source>${project.basedir}/model</source>
+								<source>${project.basedir}/src-gen</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>mwe2Launcher</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
+					<arguments>
+						<argument>${project.basedir}/src/org/muml/uppaal/GenerateModel.mwe2</argument>
+						<argument>-p</argument>
+						<argument>parentPath=${project.parent.basedir}</argument>
+						<argument>-p</argument>
+						<argument>pluginID=${project.artifactId}</argument>
+					</arguments>
+					<classpathScope>compile</classpathScope>
+					<includePluginDependencies>true</includePluginDependencies>
+					<includeProjectDependencies>false</includeProjectDependencies>
+					<cleanupDaemonThreads>false</cleanupDaemonThreads>
+					<stopUnresponsiveDaemonThreads>true</stopUnresponsiveDaemonThreads>
+				</configuration>
+				<dependencies>
+					<!-- modeling workflow engine dependencies -->
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.mwe.utils</artifactId>
+						<version>${mwe-version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.mwe2.launch</artifactId>
+						<version>${mwe2-version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.mwe2.lib</artifactId>
+						<version>${mwe2-version}</version>
+					</dependency>
+
+					<!-- eclipse emf codegen dependencies -->
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.codegen</artifactId>
+						<version>${codegen-version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.codegen.ecore</artifactId>
+						<version>${codegen-ecore-version}</version>
+					</dependency>
+
+					<!-- eclipse xtext dependencies -->
+					<dependency>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>org.eclipse.xtext</artifactId>
+						<version>${xtext-version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>org.eclipse.xtext.common.types</artifactId>
+						<version>${xtext-version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+</project>
