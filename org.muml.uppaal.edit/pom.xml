@@ -2,13 +2,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.muml.uppaal</groupId>
 	<artifactId>org.muml.uppaal.edit</artifactId>
-	<version>${revision}</version>
+	<version>${releaseVersion}${qualifier}</version>
 	<packaging>eclipse-plugin</packaging>
 
 	<parent>
 		<groupId>org.muml.uppaal</groupId>
 		<artifactId>org.muml.uppaal.parent</artifactId>
-		<version>${revision}</version>
+		<version>${releaseVersion}${qualifier}</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	

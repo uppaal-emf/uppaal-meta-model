@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.muml.uppaal</groupId>
 	<artifactId>org.muml.uppaal.parent</artifactId>
-	<version>${revision}</version>
+	<version>${releaseVersion}${qualifier}</version>
 	<packaging>pom</packaging>
 
 	<name>uppaal-meta-model</name>
@@ -13,7 +13,8 @@
 		<tycho-version>3.0.0</tycho-version>
 		
 		<!-- Project version, needs to be kept in sync with the definitions in the plugin.xml files -->
-		<revision>1.0.0-SNAPSHOT</revision>
+		<releaseVersion>1.0.0</releaseVersion>
+		<qualifier>-SNAPSHOT</qualifier>
 
 		<!-- compiler properties -->
 		<java-build-version>11</java-build-version>
