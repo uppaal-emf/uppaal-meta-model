@@ -1,4 +1,4 @@
-# UPPAAL Meta-Model
+# UPPAAL Meta-Model [![Java CI with Maven](https://github.com/uppaal-emf/uppaal-meta-model/actions/workflows/maven.yml/badge.svg)](https://github.com/uppaal-emf/uppaal-meta-model/actions/workflows/maven.yml)
 
 ## HowTo Build
 This project requires the development kit for JavaSE 17 or higher *and* JavaSE 11 to build.
