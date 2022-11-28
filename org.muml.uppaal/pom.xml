@@ -12,7 +12,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<name>uppal-ecore</name>
+	<name>uppaal-ecore</name>
 	<description>Plugin containing the ecore meta model of UPPAALs timed automata</description>
 
 	<properties>
