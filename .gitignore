@@ -16,6 +16,10 @@ local.properties
 # Locally stored "Eclipse launch configurations"
 *.launch
 
+# Pre-packagin artifacts
+.flattened-pom.xml
+.tycho-consumer-pom.xml
+
 # Output folders
 bin/
 target/

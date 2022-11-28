@@ -52,6 +52,14 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<!-- Apache maven plugins for general build environment setup -->
@@ -162,8 +170,45 @@
 						<executionEnvironment>JavaSE-${java-build-version}</executionEnvironment>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<executions>
+						<execution>
+							<id>prepare-tycho-pom</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>update-consumer-pom</goal>
+							</goals>
+							<configuration>
+								<deleteOnExit>false</deleteOnExit>
+								<includeP2Dependencies>true</includeP2Dependencies>
+								<mapP2Dependencies>true</mapP2Dependencies>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 				
 				<!-- Miscellaneus helper plugins -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<version>1.3.0</version>
+					<executions>
+						<execution>
+							<id>flatten-pom</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>flatten</goal>
+							</goals>
+							<configuration>
+								<flattenMode>defaults</flattenMode>
+								<flattenDependencyMode>direct</flattenDependencyMode>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
