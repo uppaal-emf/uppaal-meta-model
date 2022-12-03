@@ -1,6 +1,5 @@
 # Eclipse specific stuff
 .metadata
-bin/
 tmp/
 *.tmp
 *.bak
@@ -9,6 +8,10 @@ tmp/
 local.properties
 .loadpath
 .recommenders
+
+# Other IDEs
+*.iml
+.idea/
 
 # External tool builders
 .externalToolBuilders/
