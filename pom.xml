@@ -11,7 +11,7 @@
 	<properties>
 		<!-- Defined in .mvn/maven.config; See https://github.com/eclipse-m2e/m2e-core/issues/274 -->
 		<tycho-version>3.0.0</tycho-version>
-		
+
 		<!-- Project version, needs to be kept in sync with the definitions in the plugin.xml files -->
 		<releaseVersion>1.0.0</releaseVersion>
 		<qualifier>-SNAPSHOT</qualifier>
@@ -69,23 +69,23 @@
 					<artifactId>maven-enforcer-plugin</artifactId>
 					<version>3.1.0</version>
 					<executions>
-					    <execution>
-					        <id>enforce</id>
-					        <goals>
-					            <goal>enforce</goal>
-					        </goals>
-					        <configuration>
-					            <rules>
-					                <banDuplicatePomDependencyVersions/>
-					                <requireJavaVersion>
-					             		<version>[17,)</version>
-					             	</requireJavaVersion>
-					                <requireMavenVersion>
-					                	<version>3.8.6</version>
-					                </requireMavenVersion>
-					            </rules>
-					        </configuration>
-					    </execution>
+						<execution>
+							<id>enforce</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<banDuplicatePomDependencyVersions />
+									<requireJavaVersion>
+										<version>[17,)</version>
+									</requireJavaVersion>
+									<requireMavenVersion>
+										<version>3.8.6</version>
+									</requireMavenVersion>
+								</rules>
+							</configuration>
+						</execution>
 					</executions>
 				</plugin>
 				<plugin>
@@ -119,7 +119,7 @@
 						<followSymLinks>false</followSymLinks>
 					</configuration>
 				</plugin>
-				
+
 				<!-- Tycho plugin setup for PDE development -->
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
@@ -238,9 +238,9 @@
 										<groupId>org.apache.maven.plugins</groupId>
 										<artifactId>maven-toolchains-plugin</artifactId>
 										<versionRange>[3.1.0,)</versionRange>
-										 <goals>
-								            <goal>toolchain</goal>
-								        </goals>
+										<goals>
+											<goal>toolchain</goal>
+										</goals>
 									</pluginExecutionFilter>
 									<action>
 										<ignore/>
