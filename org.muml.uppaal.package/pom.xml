@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <groupId>org.muml.uppaal</groupId>
+    <artifactId>org.muml.uppaal.package</artifactId>
+    <version>${releaseVersion}${qualifier}</version>
+
+    <parent>
+        <groupId>org.muml.uppaal</groupId>
+        <artifactId>org.muml.uppaal.parent</artifactId>
+        <version>${releaseVersion}${qualifier}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <name>uppaal-package</name>
+    <description>Aggregates artifacts from sibling modules.</description>
+
+    <build>
+        <finalName>${project.parent.name}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.4.2</version>
+                <executions>
+                    <execution>
+                        <id>assemble-packages</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorSourceDirectory>src/assembly</descriptorSourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Add modules to package as dependencies so maven builds them beforehand -->
+    <dependencies>
+        <!-- binary artifacts -->
+        <dependency>
+            <groupId>org.muml.uppaal</groupId>
+            <artifactId>org.muml.uppaal</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.muml.uppaal</groupId>
+            <artifactId>org.muml.uppaal.edit</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.muml.uppaal</groupId>
+            <artifactId>org.muml.uppaal.editor</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- source artifacts -->
+        <dependency>
+            <groupId>org.muml.uppaal</groupId>
+            <artifactId>org.muml.uppaal</artifactId>
+            <version>${project.version}</version>
+            <classifier>sources</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.muml.uppaal</groupId>
+            <artifactId>org.muml.uppaal.edit</artifactId>
+            <version>${project.version}</version>
+            <classifier>sources</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.muml.uppaal</groupId>
+            <artifactId>org.muml.uppaal.editor</artifactId>
+            <version>${project.version}</version>
+            <classifier>sources</classifier>
+        </dependency>
+    </dependencies>
+</project>
