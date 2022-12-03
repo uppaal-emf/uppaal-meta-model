@@ -38,4 +38,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
          name: packaged-bundles
-         path: ./org.muml.uppaal.package/target/uppaal-meta-model.zip
+         path: ./org.muml.uppaal.package/target/*.zip

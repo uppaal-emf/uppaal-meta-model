@@ -25,7 +25,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.4.2</version>
                 <executions>
                     <execution>
                         <id>assemble-packages</id>
@@ -36,7 +35,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <appendAssemblyId>false</appendAssemblyId>
+                    <appendAssemblyId>true</appendAssemblyId>
                     <descriptorSourceDirectory>src/assembly</descriptorSourceDirectory>
                 </configuration>
             </plugin>
@@ -45,7 +44,6 @@
 
     <!-- Add modules to package as dependencies so maven builds them beforehand -->
     <dependencies>
-        <!-- binary artifacts -->
         <dependency>
             <groupId>org.muml.uppaal</groupId>
             <artifactId>org.muml.uppaal</artifactId>
@@ -60,26 +58,6 @@
             <groupId>org.muml.uppaal</groupId>
             <artifactId>org.muml.uppaal.editor</artifactId>
             <version>${project.version}</version>
-        </dependency>
-
-        <!-- source artifacts -->
-        <dependency>
-            <groupId>org.muml.uppaal</groupId>
-            <artifactId>org.muml.uppaal</artifactId>
-            <version>${project.version}</version>
-            <classifier>sources</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.muml.uppaal</groupId>
-            <artifactId>org.muml.uppaal.edit</artifactId>
-            <version>${project.version}</version>
-            <classifier>sources</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.muml.uppaal</groupId>
-            <artifactId>org.muml.uppaal.editor</artifactId>
-            <version>${project.version}</version>
-            <classifier>sources</classifier>
         </dependency>
     </dependencies>
 </project>
