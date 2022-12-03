@@ -182,7 +182,7 @@
 								<goal>update-consumer-pom</goal>
 							</goals>
 							<configuration>
-								<deleteOnExit>false</deleteOnExit>
+								<deleteOnExit>true</deleteOnExit>
 								<includeP2Dependencies>true</includeP2Dependencies>
 								<mapP2Dependencies>true</mapP2Dependencies>
 							</configuration>
@@ -206,6 +206,13 @@
 								<flattenMode>defaults</flattenMode>
 								<flattenDependencyMode>direct</flattenDependencyMode>
 							</configuration>
+						</execution>
+						<execution>
+							<id>clean-flattened-pom</id>
+							<phase>clean</phase>
+							<goals>
+								<goal>clean</goal>
+							</goals>
 						</execution>
 					</executions>
 				</plugin>
