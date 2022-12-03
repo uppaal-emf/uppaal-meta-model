@@ -8,11 +8,29 @@
 	<name>uppaal-meta-model</name>
 	<description>An EMF Meta Model for timed automata as defined by the UPPAAL model-checking software.</description>
 
+	<licenses>
+		<license>
+			<name>Eclipse Public License 1.0</name>
+			<url>https://www.eclipse.org/org/documents/epl-v10.php</url>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Institute of Information Security and Dependability (KASTEL)</name>
+		<url>https://www.kastel.kit.edu</url>
+	</organization>
+
+	<scm>
+		<url>https://github.com/uppaal-emf/uppaal-meta-model</url>
+		<connection>scm:git:https://github.com/uppaal-emf/uppaal-meta-model.git</connection>
+		<developerConnection>scm:git:https://github.com/uppaal-emf/uppaal-meta-model.git</developerConnection>
+	</scm>
+
 	<properties>
 		<!-- Defined in .mvn/maven.config; See https://github.com/eclipse-m2e/m2e-core/issues/274 -->
 		<tycho-version>3.0.0</tycho-version>
 
-		<!-- Project version, needs to be kept in sync with the definitions in the plugin.xml files -->
+		<!-- Project version, needs to be kept in sync with the MANIFEST files -->
 		<releaseVersion>1.0.0</releaseVersion>
 		<qualifier>-SNAPSHOT</qualifier>
 
@@ -214,7 +232,7 @@
 					</executions>
 				</plugin>
 
-				<!-- Miscellaneus helper plugins -->
+				<!-- Miscellaneous helper plugins -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>flatten-maven-plugin</artifactId>
