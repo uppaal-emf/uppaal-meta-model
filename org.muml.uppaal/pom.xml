@@ -63,6 +63,8 @@
 					<arguments>
 						<argument>${project.basedir}/src/org/muml/uppaal/GenerateModel.mwe2</argument>
 						<argument>-p</argument>
+						<argument>rootPath=${project.parent.basedir}</argument>
+						<argument>-p</argument>
 						<argument>pluginID=${project.artifactId}</argument>
 					</arguments>
 					<classpathScope>compile</classpathScope>
