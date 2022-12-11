@@ -23,6 +23,33 @@
         <finalName>${project.parent.name}</finalName>
         <plugins>
             <plugin>
+                <groupId>org.eclipse.tycho.extras</groupId>
+                <artifactId>tycho-document-bundle-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-javadoc</id>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                        <configuration>
+                            <javadocOptions>
+                                <ignoreError>true</ignoreError>
+                                <additionalArguments>
+                                    <additionalArgument>-quiet</additionalArgument>
+                                    <additionalArgument>-Xdoclint:none</additionalArgument>
+                                    <additionalArgument>-windowtitle "${project.build.finalName}"</additionalArgument>
+                                </additionalArguments>
+                            </javadocOptions>
+
+                            <basedir>${project.build.directory}/javadoc</basedir>
+                            <tocFile>${project.build.directory}/javadoc/toc.xml</tocFile>
+                            <outputDirectory>${project.build.directory}/javadoc</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
