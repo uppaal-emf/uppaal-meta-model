@@ -1,9 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.muml.uppaal</groupId>
-	<artifactId>org.muml.uppaal</artifactId>
-	<version>${releaseVersion}${qualifier}</version>
-	<packaging>eclipse-plugin</packaging>
 
 	<parent>
 		<groupId>org.muml.uppaal</groupId>
@@ -12,8 +8,13 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
+	<groupId>org.muml.uppaal</groupId>
+	<artifactId>org.muml.uppaal</artifactId>
+	<version>${releaseVersion}${qualifier}</version>
+	<packaging>eclipse-plugin</packaging>
+
 	<name>uppaal-ecore</name>
-	<description>Plugin containing the ecore meta model of UPPAALs timed automata</description>
+	<description>Plugin containing the ecore meta model of Uppaal's timed automata.</description>
 
 	<properties>
 		<!-- modeling workflow engine version -->
