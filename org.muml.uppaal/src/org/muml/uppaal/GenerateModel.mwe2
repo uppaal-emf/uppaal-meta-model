@@ -4,11 +4,12 @@ import org.eclipse.emf.mwe.utils.StandaloneSetup
 import org.eclipse.emf.mwe2.ecore.EcoreGenerator
 import org.eclipse.emf.mwe2.runtime.workflow.Workflow
 
+var rootPath
 var pluginID
 
 Workflow {
 	bean = StandaloneSetup {
-		platformUri = "../"
+		platformUri = rootPath
 		scanClassPath = true
 	}
 	

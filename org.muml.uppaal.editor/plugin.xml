@@ -40,6 +40,34 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
+            id="org.muml.uppaal.core.presentation.CoreModelWizardID"
+            name="%_UI_CoreModelWizard_label"
+            class="org.muml.uppaal.core.presentation.CoreModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CoreModelFile.gif">
+         <description>%_UI_CoreModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated uppaal -->
+      <editor
+            id="org.muml.uppaal.core.presentation.CoreEditorID"
+            name="%_UI_CoreEditor_label"
+            icon="icons/full/obj16/CoreModelFile.gif"
+            extensions="core"
+            class="org.muml.uppaal.core.presentation.CoreEditor"
+            contributorClass="org.muml.uppaal.core.presentation.CoreActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated uppaal -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
             id="org.muml.uppaal.types.presentation.TypesModelWizardID"
             name="%_UI_TypesModelWizard_label"
             class="org.muml.uppaal.types.presentation.TypesModelWizard"

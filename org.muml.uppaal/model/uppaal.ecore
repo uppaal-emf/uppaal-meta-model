@@ -121,6 +121,13 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IdentifiableElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Represents Elements that share a unique id"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          iD="true"/>
+    </eClassifiers>
   </eSubpackages>
   <eSubpackages name="types" nsURI="http://www.muml.org/uppaal/types/1.0.0" nsPrefix="types">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -757,7 +764,7 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Location" eSuperTypes="#//core/NamedElement #//core/CommentableElement #//visuals/PlanarElement #//visuals/ColoredElement">
+    <eClassifiers xsi:type="ecore:EClass" name="Location" eSuperTypes="#//core/NamedElement #//core/CommentableElement #//visuals/PlanarElement #//visuals/ColoredElement #//core/IdentifiableElement">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="Location"/>
         <details key="kind" value="empty"/>
@@ -796,7 +803,7 @@
       <eLiterals name="URGENT" value="1"/>
       <eLiterals name="COMMITED" value="2"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Edge" eSuperTypes="#//visuals/LinearElement #//core/CommentableElement #//visuals/ColoredElement">
+    <eClassifiers xsi:type="ecore:EClass" name="Edge" eSuperTypes="#//visuals/LinearElement #//core/CommentableElement #//visuals/ColoredElement #//core/IdentifiableElement">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="Edge"/>
         <details key="kind" value="empty"/>

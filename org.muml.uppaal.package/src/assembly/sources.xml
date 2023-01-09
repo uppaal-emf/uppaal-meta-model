@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.1.1"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.1.1 http://maven.apache.org/xsd/assembly-2.1.1.xsd">
+
+    <id>sources</id>
+
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <fileSets>
+        <fileSet>
+            <directory>${project.basedir}/src/main/resources</directory>
+            <includes>
+                <include>README*</include>
+                <include>LICENSE*</include>
+                <include>NOTICE*</include>
+            </includes>
+            <outputDirectory/>
+            <useDefaultExcludes>true</useDefaultExcludes>
+        </fileSet>
+    </fileSets>
+
+    <moduleSets>
+        <moduleSet>
+            <useAllReactorProjects>true</useAllReactorProjects>
+            <includes>
+                <include>${project.groupId}:org.muml.uppaal:</include>
+                <include>${project.groupId}:org.muml.uppaal.edit:</include>
+                <include>${project.groupId}:org.muml.uppaal.editor:</include>
+            </includes>
+            <binaries>
+                <unpack>false</unpack>
+                <includeDependencies>false</includeDependencies>
+                <attachmentClassifier>sources</attachmentClassifier>
+            </binaries>
+        </moduleSet>
+    </moduleSets>
+</assembly>
