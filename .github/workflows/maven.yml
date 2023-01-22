@@ -18,9 +18,12 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        sys:
+          - { os: ubuntu-latest, shell: bash, cmd: './mvnw' }
+          - { os: macos-latest, shell: bash, cmd: './mvnw' }
+          - { os: windows-latest, shell: cmd, cmd: 'mvnw.cmd' }
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.sys.os }}
 
     steps:
     - uses: actions/checkout@v3
@@ -36,9 +39,11 @@ jobs:
            JavaSE-18
         cache: maven
     - name: Build with Maven
-      run: ./mvnw -B package --file pom.xml
+      shell: ${{ matrix.sys.shell }}
+      run: ${{ matrix.sys.cmd }} -B package -f pom.xml
     - name: Package artifacts
       uses: actions/upload-artifact@v3
+      if: runner.os == 'Linux'
       with:
          name: packaged-bundles
          path: ./org.muml.uppaal.package/target/*.zip
