@@ -20,13 +20,13 @@ jobs:
       matrix:
           os: [ubuntu-latest, macOS-latest]
           shell: [bash]
-          command: [./mvnw]
+          command: ['./mvnw']
           include:
             - os: windows-latest
               shell: cmd
-              command: mvnw.cmd
+              command: 'mvnw.cmd'
 
-    runs-on: ${{ matrix.sys.os }}
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v3
