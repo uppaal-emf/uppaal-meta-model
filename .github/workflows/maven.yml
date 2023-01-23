@@ -18,13 +18,7 @@ jobs:
   build:
     strategy:
       matrix:
-          os: [ubuntu-latest, macOS-latest]
-          shell: [bash]
-          command: ['./mvnw']
-          include:
-            - os: windows-latest
-              shell: cmd
-              command: 'mvnw.cmd'
+          os: [ubuntu-latest, macOS-latest, windows-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -41,9 +35,13 @@ jobs:
            JavaSE-11
            JavaSE-18
         cache: maven
-    - name: Build with Maven
-      shell: ${{ matrix.shell }}
-      run: ${{ matrix.command }} -B package -f pom.xml
+    - name: Build with Maven wrapper
+      uses: KnicKnic/os-specific-run@v1.0.4
+      with:
+        linux: ./mvnw -B package --file pom.xml
+        macos: ./mvnw -B package --file pom.xml
+        windows: mvnw.cmd -B package -f pom.xml
+        windowsShell: cmd
     - name: Package artifacts
       uses: actions/upload-artifact@v3
       if: runner.os == 'Linux'
