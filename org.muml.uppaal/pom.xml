@@ -62,7 +62,7 @@
 				<configuration>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>${workflow-file}</argument>
+						<argument>${project.baseUri}/src/org/muml/uppaal/GenerateModel.mwe2</argument>
 						<argument>-p</argument>
 						<argument>rootPath=${project.parent.basedir}</argument>
 						<argument>-p</argument>
@@ -119,27 +119,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	<profiles>
-		<profile>
-			<id>windows</id>
-			<activation>
-				<os><family>windows</family></os>
-			</activation>
-			<properties>
-				<!-- on windows, we fall back to a file path to the workflow file -->
-				<workflow-file>${project.basedir}\src\org\muml\uppaal\GenerateModel.mwe2</workflow-file>
-			</properties>
-		</profile>
-		<profile>
-			<id>!windows</id>
-			<activation>
-				<os><family>!windows</family></os>
-			</activation>
-			<properties>
-				<!-- on other systems, use a file URI to the workflow file -->
-				<workflow-file>${project.basedir}/src/org/muml/uppaal/GenerateModel.mwe2</workflow-file>
-			</properties>
-		</profile>
-	</profiles>
 </project>
