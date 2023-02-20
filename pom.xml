@@ -331,5 +331,15 @@
 				<moduleProperties><![CDATA[--add-modules=ALL-SYSTEM]]></moduleProperties>
 			</properties>
 		</profile>
+		<profile>
+			<id>ci-release</id>
+			<distributionManagement>
+				<repository>
+			      <id>github</id>
+			      <name>GitHub Packages</name>
+			      <url>https://maven.pkg.github.com/uppaal-emf/uppaal-meta-model</url>
+			    </repository>
+			</distributionManagement>
+		</profile>
 	</profiles>
 </project>

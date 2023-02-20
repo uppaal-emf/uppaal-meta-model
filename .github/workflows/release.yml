@@ -1,0 +1,29 @@
+name: Release CI with Maven
+
+on:
+  release:
+    types: [published]
+    
+jobs:
+  release:
+     runs-on: ubuntu-latest
+
+     steps:
+     - name: Checkout
+       uses: actions/checkout@v3
+     - run: echo "TIMESTAMP=$(git show -s --format=%cd --date=format:%Y%m%d%H%M ${GITHUB_SHA})" >> $GITHUB_ENV
+     - name: Set up Java toolchain
+       uses: actions/setup-java@v3
+       with:
+         distribution: 'temurin'
+         java-version: |
+            11
+            18
+         mvn-toolchain-id: |
+            JavaSE-11
+            JavaSE-18
+         cache: maven
+     - name: Release with Maven Wrapper
+       run: ./mvnw -B -P ci-release -DforceContextQualifier=${TIMESTAMP} deploy
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
