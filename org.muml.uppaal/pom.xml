@@ -18,15 +18,15 @@
 
 	<properties>
 		<!-- modeling workflow engine version -->
-		<mwe-version>1.7.0</mwe-version>
-		<mwe2-version>2.13.0</mwe2-version>
+		<mwe-version>1.8.0</mwe-version>
+		<mwe2-version>2.14.0</mwe2-version>
 
 		<!-- emf codegen versions -->
 		<codegen-version>2.22.0</codegen-version>
-		<codegen-ecore-version>2.31.0</codegen-ecore-version>
+		<codegen-ecore-version>2.32.0</codegen-ecore-version>
 
 		<!-- eclipse xtext dependency versions -->
-		<xtext-version>2.29.0.M1</xtext-version>
+		<xtext-version>2.30.0.M3</xtext-version>
 	</properties>
 
 	<build>
@@ -62,13 +62,13 @@
 				<configuration>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>${project.baseUri}/src/org/muml/uppaal/GenerateModel.mwe2</argument>
+						<argument>classpath://org.muml.uppaal.build/org/muml/uppaal/build/GenerateModel.mwe2</argument>
 						<argument>-p</argument>
 						<argument>rootPath=${project.parent.basedir}</argument>
 						<argument>-p</argument>
 						<argument>pluginID=${project.artifactId}</argument>
 					</arguments>
-					<classpathScope>compile</classpathScope>
+					<!--<classpathScope>compile</classpathScope>-->
 					<includePluginDependencies>true</includePluginDependencies>
 					<includeProjectDependencies>false</includeProjectDependencies>
 					<cleanupDaemonThreads>false</cleanupDaemonThreads>
@@ -110,13 +110,48 @@
 						<artifactId>org.eclipse.xtext</artifactId>
 						<version>${xtext-version}</version>
 					</dependency>
+					
+					<dependency>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>org.eclipse.xtext.ecore</artifactId>
+						<version>2.30.0.M3</version>
+					</dependency>
+					
 					<dependency>
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.common.types</artifactId>
 						<version>${xtext-version}</version>
 					</dependency>
+					
+					<!--
+					 <dependency>
+				      <groupId>p2.eclipse.plugin</groupId>
+				      <artifactId>org.eclipse.ocl.common</artifactId>
+				      <version>1.18.0.v20221121-1436</version>
+				    </dependency>
+				    
+				    <dependency>
+				      <groupId>p2.eclipse.plugin</groupId>
+				      <artifactId>org.eclipse.ocl.examples.codegen</artifactId>
+				      <version>2.18.0.v20221121-1436</version>
+				     </dependency>
+					 -->
+					 <dependency>
+						 <groupId>org.muml.uppaal</groupId>
+						 <artifactId>org.muml.uppaal.build</artifactId>
+						 <version>${project.version}</version>
+						 <scope>runtime</scope>
+					 </dependency>
 				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.muml.uppaal</groupId>
+			<artifactId>org.muml.uppaal.build</artifactId>
+			<version>${project.version}</version>
+	 	</dependency>
+	</dependencies>
 </project>

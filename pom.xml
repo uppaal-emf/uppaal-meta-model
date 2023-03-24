@@ -43,6 +43,7 @@
 
 	<modules>
 		<module>org.muml.uppaal</module>
+		<module>org.muml.uppaal.build</module>
 		<module>org.muml.uppaal.edit</module>
 		<module>org.muml.uppaal.editor</module>
 		<module>org.muml.uppaal.platform</module>

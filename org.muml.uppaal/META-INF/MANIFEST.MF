@@ -42,6 +42,10 @@ Export-Package: org.muml.uppaal,
  org.muml.uppaal.visuals.impl,
  org.muml.uppaal.visuals.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.ocl.pivot;visibility:=reexport,
+ org.eclipse.ocl.examples.codegen;visibility:=reexport,
+ org.eclipse.jdt.annotation;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime;x-installation:=greedy;resolution:=optional
 Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.ocl.xtext.essentialocl

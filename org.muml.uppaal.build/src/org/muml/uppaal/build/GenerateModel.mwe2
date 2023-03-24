@@ -1,0 +1,46 @@
+module org.muml.uppaal.build.GenerateModel
+
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.ocl.examples.build.utilities.EcoreGenModelSetup
+
+import org.eclipse.emf.mwe.utils.StandaloneSetup
+import org.eclipse.emf.mwe2.runtime.workflow.Workflow
+
+import org.muml.uppaal.build.ModelGenerator
+
+var rootPath
+var pluginID
+
+Workflow {
+	bean = ResourceSetImpl : resourceSet {}
+	
+	bean = StandaloneSetup {
+		resourceSet = resourceSet
+		platformUri = rootPath
+		scanClassPath = true
+		/*
+		uriMap = {
+			from = "platform:/resource/${pluginID}/src-gen"
+			to = "${rootPath}/${pluginID}/src-gen"
+		}
+		
+		uriMap = {
+			from = "platform:/resource/${pluginID}.edit/src-gen"
+			to = "${rootPath}/${pluginID}.edit/src-gen"
+		}
+		
+		uriMap = {
+			from = "platform:/resource/${pluginID}.editor/src-gen"
+			to = "${rootPath}/${pluginID}.editor/src-gen"
+		}*/
+	}
+	
+	bean = EcoreGenModelSetup {
+		resourceSet = resourceSet
+	}
+	
+	component = ModelGenerator {
+		resourceSet = resourceSet
+		genModel = "platform:/resource/${pluginID}/model/uppaal.genmodel"
+	}
+}

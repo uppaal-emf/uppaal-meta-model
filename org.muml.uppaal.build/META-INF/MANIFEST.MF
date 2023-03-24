@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: BuildUtils
+Bundle-SymbolicName: org.muml.uppaal.build
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.emf.ecore,
+ org.eclipse.emf.codegen.ecore,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.jdt.annotation,
+ org.eclipse.ocl.examples.codegen,
+ org.eclipse.ocl.xtext.completeocl,
+ org.apache.log4j;bundle-version="1.2.19",
+ org.eclipse.emf.mwe2.lib
+Automatic-Module-Name: org.muml.uppaal.build
+Bundle-RequiredExecutionEnvironment: JavaSE-11

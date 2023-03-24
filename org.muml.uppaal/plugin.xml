@@ -14,13 +14,6 @@
             genModel="model/uppaal.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated uppaal -->
-      <parser
-            type="uppaal"
-            class="org.muml.uppaal.util.UppaalResourceFactoryImpl"/>
-   </extension>
-
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated uppaal -->
       <package
@@ -37,26 +30,12 @@
             genModel="model/uppaal.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated uppaal -->
-      <parser
-            type="types"
-            class="org.muml.uppaal.types.util.TypesResourceFactoryImpl"/>
-   </extension>
-
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated uppaal -->
       <package
             uri="http://www.muml.org/uppaal/declarations/1.0.0"
             class="org.muml.uppaal.declarations.DeclarationsPackage"
             genModel="model/uppaal.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated uppaal -->
-      <parser
-            type="declarations"
-            class="org.muml.uppaal.declarations.util.DeclarationsResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -67,26 +46,12 @@
             genModel="model/uppaal.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated uppaal -->
-      <parser
-            type="global"
-            class="org.muml.uppaal.declarations.global.util.GlobalResourceFactoryImpl"/>
-   </extension>
-
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated uppaal -->
       <package
             uri="http://www.muml.org/uppaal/declarations/system"
             class="org.muml.uppaal.declarations.system.SystemPackage"
             genModel="model/uppaal.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated uppaal -->
-      <parser
-            type="system"
-            class="org.muml.uppaal.declarations.system.util.SystemResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -97,13 +62,6 @@
             genModel="model/uppaal.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated uppaal -->
-      <parser
-            type="templates"
-            class="org.muml.uppaal.templates.util.TemplatesResourceFactoryImpl"/>
-   </extension>
-
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated uppaal -->
       <package
@@ -112,26 +70,12 @@
             genModel="model/uppaal.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated uppaal -->
-      <parser
-            type="statements"
-            class="org.muml.uppaal.statements.util.StatementsResourceFactoryImpl"/>
-   </extension>
-
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated uppaal -->
       <package
             uri="http://www.muml.org/uppaal/expressions/1.0.0"
             class="org.muml.uppaal.expressions.ExpressionsPackage"
             genModel="model/uppaal.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated uppaal -->
-      <parser
-            type="expressions"
-            class="org.muml.uppaal.expressions.util.ExpressionsResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">

@@ -14,8 +14,43 @@
 			<unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.14.0.v20221117-1134"/>
 			<unit id="org.eclipse.emf.sdk.feature.group" version="2.32.0.v20221121-1400"/>
 			<unit id="org.eclipse.equinox.sdk.feature.group" version="3.23.600.v20221116-1440"/>
-			<unit id="org.eclipse.ocl.build.feature.group" version="6.18.0.v20221121-1436"/>
-			<unit id="org.eclipse.ocl.examples.source.feature.group" version="6.18.0.v20221121-1436"/>
+		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<repository location="https://download.eclipse.org/modeling/mdt/ocl/updates/releases/latest"/>
+			<unit id="org.eclipse.ocl.all.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.all.source.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.build.feature.group" version="6.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.build.source.feature.group" version="6.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.examples.feature.group" version="6.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.examples.source.feature.group" version="6.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.examples.unified.feature.group" version="4.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.examples.unified.source.feature.group" version="4.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.master.feature.group" version="6.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.master.source.feature.group" version="6.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.all.sdk.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.all.sdk.source.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.core.sdk.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.core.sdk.source.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.doc.feature.group" version="3.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.doc.source.feature.group" version="3.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.edit.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.edit.source.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.examples.classic.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.examples.classic.source.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.examples.tests.feature.group" version="1.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.examples.tests.source.feature.group" version="1.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.feature.group" version="3.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.source.feature.group" version="3.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.tests.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.tests.source.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.ui.feature.group" version="2.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.ui.source.feature.group" version="2.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.uml.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.uml.source.feature.group" version="5.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.unified.core.feature.group" version="1.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.unified.core.source.feature.group" version="1.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.unified.ui.feature.group" version="1.18.0.v20221201-0557"/>
+			<unit id="org.eclipse.ocl.unified.ui.source.feature.group" version="1.18.0.v20221201-0557"/>
 		</location>
 	</locations>
 </target>
