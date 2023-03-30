@@ -3,12 +3,14 @@ package org.muml.uppaal.types;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class StdLib {
-	private static final URI STDLIB_URI = URI.createPlatformResourceURI("/org.muml.uppaal/model/sdtlib.xmi", false);
+	private static final URI STDLIB_URI = URI.createPlatformResourceURI("org.muml.uppaal/model/stdlib.xmi", false);
 	private static final Library INSTANCE = getLibrary();
 	
 	public static final PredefinedType INT = getType(BuiltInType.INT.getLiteral());
@@ -17,7 +19,7 @@ public class StdLib {
 	public static final PredefinedType CHAN = getType(BuiltInType.CHAN.getLiteral());
 	public static final PredefinedType CLOCK = getType(BuiltInType.CLOCK.getLiteral());
 	
-	public static final Iterable<PredefinedType> ALL_TYPES = List.of(BOOL, INT, BOOL, VOID, CHAN, CLOCK);
+	public static final Iterable<PredefinedType> ALL_TYPES = List.of(BOOL, INT, VOID, CHAN, CLOCK);
 	
 	private static PredefinedType getType(final String name) {
 		for (PredefinedType type : INSTANCE.getTypes()) {
@@ -33,8 +35,9 @@ public class StdLib {
 		TypesPackage.eINSTANCE.eClass();
 		
 		ResourceSet resources = new ResourceSetImpl();
-		Resource resource = resources.getResource(STDLIB_URI, true);
+		resources.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap(false));
 		
-		return (Library) resource.getContents().get(0);
+		Resource resource = resources.getResource(STDLIB_URI, true);
+		return (Library) EcoreUtil.getObjectByType(resource.getContents(), TypesPackage.Literals.LIBRARY);
 	}
 }
