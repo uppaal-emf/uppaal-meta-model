@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.muml.uppaal</groupId>
+        <artifactId>org.muml.uppaal.parent</artifactId>
+        <version>${releaseVersion}${qualifier}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>org.muml.uppaal</groupId>
+    <artifactId>org.muml.uppaal.package</artifactId>
+    <version>${releaseVersion}${qualifier}</version>
+
+    <name>uppaal-package</name>
+    <description>Aggregates artifacts from sibling modules.</description>
+
+    <build>
+        <finalName>${project.parent.name}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho.extras</groupId>
+                <artifactId>tycho-document-bundle-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-javadoc</id>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                        <configuration>
+                            <javadocOptions>
+                                <ignoreError>true</ignoreError>
+                                <additionalArguments>
+                                    <additionalArgument>-quiet</additionalArgument>
+                                    <additionalArgument>-Xdoclint:none</additionalArgument>
+                                    <additionalArgument>-windowtitle "${project.build.finalName}"</additionalArgument>
+                                </additionalArguments>
+                            </javadocOptions>
+
+                            <basedir>${project.build.directory}/javadoc</basedir>
+                            <tocFile>${project.build.directory}/javadoc/toc.xml</tocFile>
+                            <outputDirectory>${project.build.directory}/javadoc</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>assemble-packages</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <appendAssemblyId>true</appendAssemblyId>
+                    <descriptorSourceDirectory>src/assembly</descriptorSourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Add modules to package as dependencies so maven builds them beforehand -->
+    <dependencies>
+        <dependency>
+            <groupId>org.muml.uppaal</groupId>
+            <artifactId>org.muml.uppaal</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.muml.uppaal</groupId>
+            <artifactId>org.muml.uppaal.edit</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.muml.uppaal</groupId>
+            <artifactId>org.muml.uppaal.editor</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,9 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.muml.uppaal</groupId>
-	<artifactId>org.muml.uppaal</artifactId>
-	<version>${releaseVersion}${qualifier}</version>
-	<packaging>eclipse-plugin</packaging>
 
 	<parent>
 		<groupId>org.muml.uppaal</groupId>
@@ -12,8 +8,13 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<name>uppal-ecore</name>
-	<description>Plugin containing the ecore meta model of UPPAALs timed automata</description>
+	<groupId>org.muml.uppaal</groupId>
+	<artifactId>org.muml.uppaal</artifactId>
+	<version>${releaseVersion}${qualifier}</version>
+	<packaging>eclipse-plugin</packaging>
+
+	<name>uppaal-ecore</name>
+	<description>Plugin containing the ecore meta model of Uppaal's timed automata.</description>
 
 	<properties>
 		<!-- modeling workflow engine version -->
@@ -48,25 +49,6 @@
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${project.basedir}/src</source>
-								<source>${project.basedir}/model</source>
-								<source>${project.basedir}/src-gen</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<executions>
 					<execution>
@@ -80,7 +62,9 @@
 				<configuration>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>${project.basedir}/src/org/muml/uppaal/GenerateModel.mwe2</argument>
+						<argument>${project.baseUri}/src/org/muml/uppaal/GenerateModel.mwe2</argument>
+						<argument>-p</argument>
+						<argument>rootPath=${project.parent.basedir}</argument>
 						<argument>-p</argument>
 						<argument>pluginID=${project.artifactId}</argument>
 					</arguments>

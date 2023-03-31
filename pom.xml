@@ -8,11 +8,29 @@
 	<name>uppaal-meta-model</name>
 	<description>An EMF Meta Model for timed automata as defined by the UPPAAL model-checking software.</description>
 
+	<licenses>
+		<license>
+			<name>Eclipse Public License 1.0</name>
+			<url>https://www.eclipse.org/org/documents/epl-1.0/EPL-1.0.txt</url>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Institute of Information Security and Dependability (KASTEL)</name>
+		<url>https://www.kastel.kit.edu</url>
+	</organization>
+
+	<scm>
+		<url>https://github.com/uppaal-emf/uppaal-meta-model</url>
+		<connection>scm:git:https://github.com/uppaal-emf/uppaal-meta-model.git</connection>
+		<developerConnection>scm:git:https://github.com/uppaal-emf/uppaal-meta-model.git</developerConnection>
+	</scm>
+
 	<properties>
 		<!-- Defined in .mvn/maven.config; See https://github.com/eclipse-m2e/m2e-core/issues/274 -->
 		<tycho-version>3.0.0</tycho-version>
-		
-		<!-- Project version, needs to be kept in sync with the definitions in the plugin.xml files -->
+
+		<!-- Project version, needs to be kept in sync with the MANIFEST files -->
 		<releaseVersion>1.0.0</releaseVersion>
 		<qualifier>-SNAPSHOT</qualifier>
 
@@ -28,6 +46,7 @@
 		<module>org.muml.uppaal.edit</module>
 		<module>org.muml.uppaal.editor</module>
 		<module>org.muml.uppaal.platform</module>
+		<module>org.muml.uppaal.package</module>
 	</modules>
 
 	<build>
@@ -52,6 +71,18 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<!-- Apache maven plugins for general build environment setup -->
@@ -61,23 +92,23 @@
 					<artifactId>maven-enforcer-plugin</artifactId>
 					<version>3.1.0</version>
 					<executions>
-					    <execution>
-					        <id>enforce</id>
-					        <goals>
-					            <goal>enforce</goal>
-					        </goals>
-					        <configuration>
-					            <rules>
-					                <banDuplicatePomDependencyVersions/>
-					                <requireJavaVersion>
-					             		<version>[17,)</version>
-					             	</requireJavaVersion>
-					                <requireMavenVersion>
-					                	<version>3.8.6</version>
-					                </requireMavenVersion>
-					            </rules>
-					        </configuration>
-					    </execution>
+						<execution>
+							<id>enforce</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<banDuplicatePomDependencyVersions />
+									<requireJavaVersion>
+										<version>[17,)</version>
+									</requireJavaVersion>
+									<requireMavenVersion>
+										<version>3.8.6</version>
+									</requireMavenVersion>
+								</rules>
+							</configuration>
+						</execution>
 					</executions>
 				</plugin>
 				<plugin>
@@ -111,7 +142,12 @@
 						<followSymLinks>false</followSymLinks>
 					</configuration>
 				</plugin>
-				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>3.4.2</version>
+				</plugin>
+
 				<!-- Tycho plugin setup for PDE development -->
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
@@ -162,8 +198,66 @@
 						<executionEnvironment>JavaSE-${java-build-version}</executionEnvironment>
 					</configuration>
 				</plugin>
-				
-				<!-- Miscellaneus helper plugins -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<executions>
+						<execution>
+							<id>prepare-tycho-pom</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>update-consumer-pom</goal>
+							</goals>
+							<configuration>
+								<deleteOnExit>true</deleteOnExit>
+								<includeP2Dependencies>true</includeP2Dependencies>
+								<mapP2Dependencies>true</mapP2Dependencies>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-source-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<executions>
+						<execution>
+							<id>package-plugin-sources</id>
+							<phase>package</phase>
+							<goals>
+								<goal>plugin-source</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- Miscellaneous helper plugins -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<version>1.3.0</version>
+					<executions>
+						<execution>
+							<id>flatten-pom</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>flatten</goal>
+							</goals>
+							<configuration>
+								<flattenMode>defaults</flattenMode>
+								<flattenDependencyMode>direct</flattenDependencyMode>
+							</configuration>
+						</execution>
+						<execution>
+							<id>clean-flattened-pom</id>
+							<phase>clean</phase>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
@@ -186,9 +280,9 @@
 										<groupId>org.apache.maven.plugins</groupId>
 										<artifactId>maven-toolchains-plugin</artifactId>
 										<versionRange>[3.1.0,)</versionRange>
-										 <goals>
-								            <goal>toolchain</goal>
-								        </goals>
+										<goals>
+											<goal>toolchain</goal>
+										</goals>
 									</pluginExecutionFilter>
 									<action>
 										<ignore/>
@@ -236,6 +330,16 @@
 			<properties>
 				<moduleProperties><![CDATA[--add-modules=ALL-SYSTEM]]></moduleProperties>
 			</properties>
+		</profile>
+		<profile>
+			<id>ci-release</id>
+			<distributionManagement>
+				<repository>
+			      <id>github</id>
+			      <name>GitHub Packages</name>
+			      <url>https://maven.pkg.github.com/uppaal-emf/uppaal-meta-model</url>
+			    </repository>
+			</distributionManagement>
 		</profile>
 	</profiles>
 </project>

@@ -8,7 +8,7 @@ This project requires the development kit for JavaSE 17 or higher *and* JavaSE 1
 Make sure you have both of them installed and correctly set up your `toolchains.xml` file
 to point to their install directory:
 ```
-<?xml version="1.0" encoding="UTF8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <toolchains xmlns="http://maven.apache.org/TOOLCHAINS/1.1.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/TOOLCHAINS/1.1.0 http://maven.apache.org/xsd/toolchains-1.1.0.xsd">
@@ -35,6 +35,13 @@ to point to their install directory:
 </toolchains>
 ```
 
-The project then can be build from the root directory by executing `./mvnw compile` on Linux and MacOS and by `mvnw.cmd compile` on Windows respectively.
-Note that code generation from the `org.muml.uppaal/model/uppaal.genmodel` Generator Model is part of the build process and therefore generated sources are *not* checked in.
-Code Generation is conducted during the build via a Modeling Workflow described in `org.muml.uppaal/src/org/muml/uppaal/GenerateModel.mw2`. 
+The project then can be build from the root directory by executing `./mvnw compile` on Linux and
+MacOS and by `mvnw.cmd compile` on Windows respectively.
+
+To retrieve installable packages execute the `package` maven goal.
+Binary and source bundles are then aggregated under `org.muml.uppaal.package/target`.
+
+Note that code generation from the `org.muml.uppaal/model/uppaal.genmodel` Generator Model
+is part of the build process and therefore generated sources are *not* checked in.
+Code Generation is conducted during the built via a Modeling Workflow described in
+`org.muml.uppaal/src/org/muml/uppaal/GenerateModel.mw2`. 

@@ -1,6 +1,5 @@
 # Eclipse specific stuff
 .metadata
-bin/
 tmp/
 *.tmp
 *.bak
@@ -10,11 +9,19 @@ local.properties
 .loadpath
 .recommenders
 
+# Other IDEs
+*.iml
+.idea/
+
 # External tool builders
 .externalToolBuilders/
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+
+# Pre-packagin artifacts
+.flattened-pom.xml
+.tycho-consumer-pom.xml
 
 # Output folders
 bin/
