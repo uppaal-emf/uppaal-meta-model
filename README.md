@@ -1,7 +1,7 @@
-# UPPAAL Meta-Model [![Java CI with Maven](https://github.com/uppaal-emf/uppaal-meta-model/actions/workflows/maven.yml/badge.svg)](https://github.com/uppaal-emf/uppaal-meta-model/actions/workflows/maven.yml)
+# UPPAAL Meta-Model [![Java CI with Maven](https://github.com/uppaal-emf/uppaal-meta-model/actions/workflows/build.yml/badge.svg)](https://github.com/uppaal-emf/uppaal-meta-model/actions/workflows/build.yml)
 An Eclipse EMF based Meta-Model for networks of timed automata as they appear in UPPAAL (https://uppaal.org/).
 Intended to be used as a library for other model based tooling.
-Depends on the Eclipse Modeling Framework and -Libraries. Build using Eclipse Tycho.
+Depends on the Eclipse Modeling Framework and -Libraries. Built using Eclipse Tycho.
 
 ## HowTo Build
 This project requires the development kit for JavaSE 17 or higher *and* JavaSE 11 to build.
@@ -35,7 +35,7 @@ to point to their install directory:
 </toolchains>
 ```
 
-The project then can be build from the root directory by executing `./mvnw compile` on Linux and
+You can build from the root directory by executing `./mvnw compile` on Linux and
 MacOS and by `mvnw.cmd compile` on Windows respectively.
 
 To retrieve installable packages execute the `package` maven goal.
@@ -43,5 +43,5 @@ Binary and source bundles are then aggregated under `org.muml.uppaal.package/tar
 
 Note that code generation from the `org.muml.uppaal/model/uppaal.genmodel` Generator Model
 is part of the build process and therefore generated sources are *not* checked in.
-Code Generation is conducted during the built via a Modeling Workflow described in
+Code Generation is conducted during the built via a Modelling Workflow described in
 `org.muml.uppaal/src/org/muml/uppaal/GenerateModel.mw2`. 

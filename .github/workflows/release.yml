@@ -24,7 +24,7 @@ jobs:
             JavaSE-18
          cache: maven
      - name: Release with Maven Wrapper
-       run: ./mvnw -B -P ci-release -DforceContextQualifier=${TIMESTAMP} deploy
+       run: ./mvnw -B -P ci-release -DforceContextQualifier=${TIMESTAMP} -Dqualifier=.${TIMESTAMP} deploy
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
      - name: Upload Artifacts
